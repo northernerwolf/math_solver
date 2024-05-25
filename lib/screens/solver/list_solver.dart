@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:math_solver_app/screens/initial_screen.dart';
+import 'package:math_solver_app/screens/solver/basic_integral.dart';
+import 'package:math_solver_app/screens/solver/basic_integralnew.dart';
+import 'package:math_solver_app/screens/solver/integral.dart';
+import 'package:math_solver_app/screens/solver/integral_trigo.dart';
 import 'package:math_solver_app/src/core/app_constant.dart';
 import 'package:math_solver_app/src/core/color_scheme.dart';
 import 'package:math_solver_app/src/ui/dashboard/dashboard_button_view.dart';
@@ -244,7 +248,14 @@ class _MathSolverListTypesState extends State<MathSolverListTypes>
                         DashboardButtonView(
                           dashboard: KeyUtil.dashboardItems[4],
                           position: _offsetRightEnter,
-                          onTab: () {},
+                          onTab: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    PretiIntegralCalculatorScreen(),
+                              ),
+                            );
+                          },
                         ),
                         SizedBox(height: 20),
                         DashboardButtonView(

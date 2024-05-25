@@ -75,12 +75,12 @@ class _EquationState extends State<Equation> {
                 child: Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         left: 15,
                       ),
                       child: Card(
                         color: Theme.of(context).colorScheme.crossColor,
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(12))),
                         child: InkWell(
@@ -100,8 +100,8 @@ class _EquationState extends State<Equation> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Text(
                         'Quadratic Equation',
                         style: TextStyle(fontSize: 18),
@@ -123,7 +123,7 @@ class _EquationState extends State<Equation> {
                         SizedBox(
                           width: double.infinity,
                           child: Text(
-                            '${aText}x²${"+"}${bText}x${"+"}$cText = 0',
+                            '${aText}x²${bText}x$cText = 0',
                             style: const TextStyle(
                               fontSize: 18,
                             ),
