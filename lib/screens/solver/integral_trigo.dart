@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'package:math_solver_app/src/core/color_scheme.dart';
+
 class IntegralCalculatorScreen extends StatefulWidget {
   @override
   _IntegralCalculatorScreenState createState() =>
@@ -16,39 +18,97 @@ class _IntegralCalculatorScreenState extends State<IntegralCalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Integral Calculator'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _functionController,
-              decoration: InputDecoration(
-                  labelText: 'Function (e.g., asin(x), atan(x))'),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 15),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 15,
+                          ),
+                          child: Card(
+                            color: Theme.of(context).colorScheme.crossColor,
+                            shape: const RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12))),
+                            child: InkWell(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(12)),
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: SizedBox(
+                                height: 38,
+                                width: 38,
+                                child: Icon(
+                                  Icons.arrow_back_ios_new_rounded,
+                                  color:
+                                      Theme.of(context).colorScheme.baseColor,
+                                  size: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            'Inverse Trigonometric',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  TextField(
+                    controller: _functionController,
+                    decoration: InputDecoration(
+                      labelText: 'Function (e.g., asin(x), atan(x))',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  TextField(
+                    controller: _xController,
+                    decoration: InputDecoration(
+                      labelText: 'Enter value of x',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    keyboardType: TextInputType.number,
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: _calculateIntegral,
+                    child: Text('Calculate Integral'),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    'Steps:\n$_steps',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    'Result: $_result',
+                    style: TextStyle(fontSize: 20, color: Colors.green),
+                  ),
+                ],
+              ),
             ),
-            TextField(
-              controller: _xController,
-              decoration: InputDecoration(labelText: 'Enter value of x'),
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _calculateIntegral,
-              child: Text('Calculate Integral'),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Steps:\n$_steps',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Result: $_result',
-              style: TextStyle(fontSize: 24),
-            ),
-          ],
+          ),
         ),
       ),
     );

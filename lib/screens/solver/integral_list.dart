@@ -3,22 +3,21 @@ import 'package:flutter/services.dart';
 import 'package:math_solver_app/screens/initial_screen.dart';
 import 'package:math_solver_app/screens/solver/basic_integral.dart';
 import 'package:math_solver_app/screens/solver/basic_integralnew.dart';
-import 'package:math_solver_app/screens/solver/fraction.dart';
 import 'package:math_solver_app/screens/solver/integral.dart';
-import 'package:math_solver_app/screens/solver/integral_list.dart';
 import 'package:math_solver_app/screens/solver/integral_trigo.dart';
+import 'package:math_solver_app/screens/solver/log_integral.dart';
 import 'package:math_solver_app/screens/solver/quadratic_equation.dart';
 import 'package:math_solver_app/src/core/app_constant.dart';
 import 'package:math_solver_app/src/core/color_scheme.dart';
 import 'package:math_solver_app/src/ui/dashboard/dashboard_button_view.dart';
 import 'package:tuple/tuple.dart';
 
-class MathSolverListTypes extends StatefulWidget {
+class IntegralListTypes extends StatefulWidget {
   @override
-  _MathSolverListTypesState createState() => _MathSolverListTypesState();
+  _IntegralListTypesState createState() => _IntegralListTypesState();
 }
 
-class _MathSolverListTypesState extends State<MathSolverListTypes>
+class _IntegralListTypesState extends State<IntegralListTypes>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _offsetLeftEnter;
@@ -220,7 +219,7 @@ class _MathSolverListTypesState extends State<MathSolverListTypes>
                       children: <Widget>[
                         SizedBox(height: 36),
                         Text(
-                          "Math Solvers",
+                          "Integrals",
                           style: Theme.of(context)
                               .textTheme
                               .titleSmall!
@@ -237,38 +236,39 @@ class _MathSolverListTypesState extends State<MathSolverListTypes>
                         // ),
                         SizedBox(height: 36),
                         DashboardButtonView(
-                          dashboard: KeyUtil.dashboardItems[3],
+                          dashboard: KeyUtil.dashboardItems[6],
                           position: _offsetLeftEnter,
                           onTab: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    QuadraticCalculatorScreen(),
+                                    BasicIntegralCalculatorScreen(),
                               ),
                             );
                           },
                         ),
                         SizedBox(height: 20),
                         DashboardButtonView(
-                          dashboard: KeyUtil.dashboardItems[4],
+                          dashboard: KeyUtil.dashboardItems[7],
                           position: _offsetRightEnter,
                           onTab: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => IntegralListTypes(),
+                                builder: (context) =>
+                                    IntegralCalculatorScreen(),
                               ),
                             );
                           },
                         ),
                         SizedBox(height: 20),
                         DashboardButtonView(
-                          dashboard: KeyUtil.dashboardItems[5],
+                          dashboard: KeyUtil.dashboardItems[8],
                           position: _offsetLeftEnter,
                           onTab: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    FractionCalculatorScreen(),
+                                    LogIntegralCalculatorScreen(),
                               ),
                             );
                           },

@@ -49,6 +49,7 @@ class _IntegralCalculatorScreenState
             SizedBox(height: 10),
             Expanded(
               child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
                 child: Math.tex(
                   _steps,
                   mathStyle: MathStyle.display,
@@ -98,43 +99,55 @@ class _IntegralCalculatorScreenState
   String _generateSteps(String function, double x) {
     switch (function) {
       case 'x^2':
-        return r'1. Let $f(x) = x^2$'
-                '\n'
-                r'2. Integral of $x^2$ is $\frac{x^3}{3} + C$'
-                '\n'
-                '3. Substitute $x = ' +
-            x.toString();
+        return '1. Let f(x) = x^2\n '
+            '2. Integral of x^2 is ${(x * x * x / 3).toStringAsFixed(2)} + C\n'
+            '3. Substitute x = $x';
       case '1/x':
-        return r'1. Let $f(x) = \frac{1}{x}$'
-                '\n'
-                r'2. Integral of $\frac{1}{x}$ is $\ln |x| + C$ (for $x \neq 0$)'
-                '\n'
-                '3. Substitute $x = ' +
-            x.toString();
+        return '1. Let f(x) = 1/x\n'
+            '2. Integral of 1/x is ${x > 0 ? math.log(x).toStringAsFixed(2) : 'NaN'} + C (for x ≠ 0)\n'
+            '3. Substitute x = $x';
       case 'e^x':
-        return r'1. Let $f(x) = e^x$'
-                '\n'
-                r'2. Integral of $e^x$ is $e^x + C$'
-                '\n'
-                '3. Substitute $x = ' +
-            x.toString();
+        return '1. Let f(x) = e^x\n'
+            '2. Integral of e^x is ${math.exp(x).toStringAsFixed(2)} + C\n'
+            '3. Substitute x = $x';
       case 'sin(x)':
-        return r'1. Let $f(x) = \sin(x)$'
-                '\n'
-                r'2. Integral of $\sin(x)$ is $-\cos(x) + C$'
-                '\n'
-                '3. Substitute $x = ' +
-            x.toString();
+        return '1. Let f(x) = sin(x)\n'
+            '2. Integral of sin(x) is ${(-math.cos(x)).toStringAsFixed(2)} + C\n'
+            '3. Substitute x = $x';
       case 'cos(x)':
-        return r'1. Let $f(x) = \cos(x)$'
-                '\n'
-                r'2. Integral of $\cos(x)$ is $\sin(x) + C$'
-                '\n'
-                '3. Substitute $x = ' +
-            x.toString();
+        return '1. Let f(x) = cos(x)\n'
+            '2. Integral of cos(x) is ${(math.sin(x)).toStringAsFixed(2)} + C\n'
+            '3. Substitute x = $x';
       // Add more cases for other basic functions
       default:
         return '';
     }
   }
+
+  // String _generateSteps(String function, double x) {
+  // switch (function) {
+  //   case 'x^2':
+  //     return '1. Let $f(x) = x^2$ \n'
+  //         '2. Integral of $x^2$ is $\\frac{x^3}{3} + C$ \n'
+  //         '3. Substitute $x = $' + x.toString();
+  //   case '1/x':
+  //     return '1. Let $f(x) = \\frac{1}{x}$ \n'
+  //         '2. Integral of $\\frac{1}{x}$ is $\\ln |x| + C$ (for $x \\neq 0$) \n'
+  //         '3. Substitute $x = $' + x.toString();
+  //   case 'e^x':
+  //     return '1. Let $f(x) = e^x$ \n'
+  //         '2. Integral of $e^x$ is $e^x + C$ \n'
+  //         '3. Substitute $x = $' + x.toString();
+  //   case 'sin(x)':
+  //     return '1. Let $f(x) = \\sin(x)$ \n'
+  //         '2. Integral of $\\sin(x)$ is $-\\cos(x) + C$ \n'
+  //         '3. Substitute $x = $' + x.toString();
+  //   case 'cos(x)':
+  //     return '1. Let $f(x) = \\cos(x)$ \n'
+  //         '2. Integral of $\\cos(x)$ is $\\sin(x) + C$ \n'
+  //         '3. Substitute $x = $' + x.toString();
+  //   // Add more cases for other basic functions
+  //   default:
+  //     return '';
+  // }
 }
